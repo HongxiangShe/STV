@@ -82,15 +82,18 @@ extension RoomViewController {
     
     fileprivate func connectServer() {
         
-        guard socket.connectServer(5) else {
-            return
+        socket.connectServer(5) {[weak self] (flag) in
+            if let weakSelf = self {
+                if flag {
+                    HXPrint("连接成功")
+                    weakSelf.socket.delegate = self
+                    weakSelf.socket.sendJoinRoom()
+                    weakSelf.timer = Timer(fireAt: Date(), interval: 9, target: weakSelf, selector: #selector(weakSelf.sendHeartBeat), userInfo: nil, repeats: true)
+                    RunLoop.main.add(weakSelf.timer, forMode: .commonModes)
+                }
+            }
         }
         
-        HXPrint("连接成功")
-        socket.delegate = self
-        socket.sendJoinRoom()
-        timer = Timer(fireAt: Date(), interval: 9, target: self, selector: #selector(sendHeartBeat), userInfo: nil, repeats: true)
-        RunLoop.main.add(timer, forMode: .commonModes)
     }
     
     @objc fileprivate func sendHeartBeat() {

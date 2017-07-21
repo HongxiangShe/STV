@@ -47,19 +47,25 @@ class SHXSocket: NSObject {
 extension SHXSocket {
     
     // 连接服务端
-    func connectServer(_ timeout: Int) -> Bool {
+    func connectServer(_ timeout: Int, complete: @escaping (Bool) -> Void) {
         
-        let flag = self.tcpClient.connect(timeout: timeout)
-        if flag.0 {
-            isConnected = true
+        DispatchQueue.main.async {
             
-            // 开始读取消息
+            let flag = self.tcpClient.connect(timeout: timeout)
+            
+            self.isConnected = true
+            
+            complete(flag.0)
+            
             DispatchQueue.global().async {
+                // 开始读取消息
                 self.startReadMsg()
             }
         }
         
-        return flag.0
+        
+        
+        
     }
     
     // 读消息
