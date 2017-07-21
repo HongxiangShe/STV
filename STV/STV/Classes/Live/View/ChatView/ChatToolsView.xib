@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="12120" systemVersion="16E195" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12088"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view contentMode="scaleToFill" id="iN0-l3-epB" customClass="ChatToolsView" customModule="STV" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="392" height="45"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="愉快的和主播聊一聊吧" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="5r0-lg-LuH">
+                    <rect key="frame" x="5" y="5" width="317" height="35"/>
+                    <nil key="textColor"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                    <textInputTraits key="textInputTraits"/>
+                    <connections>
+                        <action selector="textFieldChangedEditing:" destination="iN0-l3-epB" eventType="editingChanged" id="d3j-RJ-61h"/>
+                    </connections>
+                </textField>
+                <button opaque="NO" contentMode="scaleToFill" enabled="NO" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="zn1-30-XA6">
+                    <rect key="frame" x="327" y="5" width="60" height="35"/>
+                    <color key="backgroundColor" red="0.81176470590000005" green="0.58431372550000005" blue="0.2156862745" alpha="1" colorSpace="calibratedRGB"/>
+                    <constraints>
+                        <constraint firstAttribute="width" constant="60" id="mYq-m5-nqn"/>
+                    </constraints>
+                    <state key="normal" title="发送">
+                        <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </state>
+                    <state key="disabled">
+                        <color key="titleColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                    </state>
+                    <connections>
+                        <action selector="sendMsg:" destination="iN0-l3-epB" eventType="touchUpInside" id="fRC-nI-Dsb"/>
+                    </connections>
+                </button>
+            </subviews>
+            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+            <constraints>
+                <constraint firstAttribute="bottom" secondItem="zn1-30-XA6" secondAttribute="bottom" constant="5" id="D5y-ct-V6k"/>
+                <constraint firstItem="zn1-30-XA6" firstAttribute="leading" secondItem="5r0-lg-LuH" secondAttribute="trailing" constant="5" id="F0s-sa-EaI"/>
+                <constraint firstItem="zn1-30-XA6" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" constant="5" id="KgC-w8-1Ha"/>
+                <constraint firstItem="5r0-lg-LuH" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" constant="5" id="Lys-kL-JDq"/>
+                <constraint firstAttribute="trailing" secondItem="zn1-30-XA6" secondAttribute="trailing" constant="5" id="MSa-W7-Ug9"/>
+                <constraint firstAttribute="bottom" secondItem="5r0-lg-LuH" secondAttribute="bottom" constant="5" id="UCN-51-rAY"/>
+                <constraint firstItem="5r0-lg-LuH" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" constant="5" id="WJU-Ro-wjH"/>
+            </constraints>
+            <nil key="simulatedStatusBarMetrics"/>
+            <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+            <connections>
+                <outlet property="inputTextField" destination="5r0-lg-LuH" id="PXg-R9-QUt"/>
+                <outlet property="sendButton" destination="zn1-30-XA6" id="pTm-mN-gIu"/>
+            </connections>
+            <point key="canvasLocation" x="157" y="-5.5"/>
+        </view>
+    </objects>
+</document>
